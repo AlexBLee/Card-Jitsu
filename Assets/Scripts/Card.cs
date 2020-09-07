@@ -15,15 +15,15 @@ public class Card : MonoBehaviour
 
     Card()
     {
-        Random rnd = new Random();
+        System.Random rnd = new System.Random();
         
         value = rnd.Next(1, 12);
 
         Array values = Enum.GetValues(typeof(Colour));
         colourType = (Colour)values.GetValue(rnd.Next(values.Length));
 
-        Array values = Enum.GetValues(typeof(Element));
-        elementType = (Colour)values.GetValue(rnd.Next(values.Length));
+        Array values2 = Enum.GetValues(typeof(Element));
+        elementType = (Element)values2.GetValue(rnd.Next(values2.Length));
     }
 
     Card(int num, Colour colour, Element elem)
