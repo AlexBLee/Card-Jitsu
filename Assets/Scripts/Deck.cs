@@ -5,9 +5,9 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
     private const int DECK_LIMIT = 5;
-    List<Card> deck = new List<Card>();
+    public List<Card> deck = new List<Card>();
 
-    void Initalize()
+    public Deck()
     {
         for (int i = 0; i < DECK_LIMIT; i++)
         {
@@ -15,12 +15,12 @@ public class Deck : MonoBehaviour
         }
     }
 
-    void RemoveCard(int index)
+    public void RemoveCard(int index)
     {
         deck[index] = null;
     }
 
-    void AddCard()
+    public void AddCard()
     {
         for (int i = 0; i < DECK_LIMIT; i++)
         {
