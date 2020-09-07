@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         deck = new Deck();
+
+        foreach (Card card in deck.deck)
+        {
+            Debug.Log(card.GetCardStats());
+        }
     }
 
     void PlayCard(Card card)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deck : MonoBehaviour
+public class Deck
 {
     private const int DECK_LIMIT = 5;
     public List<Card> deck = new List<Card>();

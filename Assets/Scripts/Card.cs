@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class Card
 {
     int value = 0;
 
@@ -13,10 +13,10 @@ public class Card : MonoBehaviour
     Colour colourType;
     Element elementType;
 
+    System.Random rnd = new System.Random();
+
     public Card()
     {
-        System.Random rnd = new System.Random();
-        
         value = rnd.Next(1, 12);
 
         Array values = Enum.GetValues(typeof(Colour));
@@ -31,5 +31,15 @@ public class Card : MonoBehaviour
         value = num;
         colourType = colour;
         elementType = elem;
+    }
+
+    public string GetCardStats()
+    {
+        string s = "";
+        s += "Value: " + value + " ";
+        s += "Elem: " + elementType + " ";
+        s += "Colour: " + colourType + " ";
+
+        return s;
     }
 }
