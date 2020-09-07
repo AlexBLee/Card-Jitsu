@@ -13,17 +13,15 @@ public class Card
     Colour colourType;
     Element elementType;
 
-    System.Random rnd = new System.Random();
-
     public Card()
     {
-        value = rnd.Next(1, 12);
+        value = GameManager.instance.rnd.Next(1, 12);
 
         Array values = Enum.GetValues(typeof(Colour));
-        colourType = (Colour)values.GetValue(rnd.Next(values.Length));
+        colourType = (Colour)values.GetValue(GameManager.instance.rnd.Next(values.Length));
 
         Array values2 = Enum.GetValues(typeof(Element));
-        elementType = (Element)values2.GetValue(rnd.Next(values2.Length));
+        elementType = (Element)values2.GetValue(GameManager.instance.rnd.Next(values2.Length));
     }
 
     Card(int num, Colour colour, Element elem)
