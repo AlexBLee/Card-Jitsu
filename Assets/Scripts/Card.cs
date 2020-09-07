@@ -13,7 +13,7 @@ public class Card : MonoBehaviour
     Colour colourType;
     Element elementType;
 
-    Card()
+    public Card()
     {
         System.Random rnd = new System.Random();
         
