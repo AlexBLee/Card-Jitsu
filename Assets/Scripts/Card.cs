@@ -5,39 +5,39 @@ using UnityEngine;
 
 public class Card
 {
-    int value = 0;
+    public int Value { get; } = 0;
+    public Colour ColourType { get; }
+    public Element ElementType { get; }
 
-    enum Colour { Red, Orange, Yellow, Green, Blue, Purple };
-    enum Element { Fire, Water, Snow }
-
-    Colour colourType;
-    Element elementType;
+    public enum Colour { Red, Orange, Yellow, Green, Blue, Purple };
+    public enum Element { Water, Fire, Snow }
 
     public Card()
     {
-        value = GameManager.instance.rnd.Next(1, 12);
+        Value = GameManager.instance.rnd.Next(1, 12);
 
         Array values = Enum.GetValues(typeof(Colour));
-        colourType = (Colour)values.GetValue(GameManager.instance.rnd.Next(values.Length));
+        ColourType = (Colour)values.GetValue(GameManager.instance.rnd.Next(values.Length));
 
         Array values2 = Enum.GetValues(typeof(Element));
-        elementType = (Element)values2.GetValue(GameManager.instance.rnd.Next(values2.Length));
+        ElementType = (Element)values2.GetValue(GameManager.instance.rnd.Next(values2.Length));
     }
 
     Card(int num, Colour colour, Element elem)
     {
-        value = num;
-        colourType = colour;
-        elementType = elem;
+        Value = num;
+        ColourType = colour;
+        ElementType = elem;
     }
 
     public string GetCardStats()
     {
         string s = "";
-        s += "Value: " + value + " ";
-        s += "Elem: " + elementType + " ";
-        s += "Colour: " + colourType + " ";
+        s += "Value: " + Value + " ";
+        s += "Elem: " + ElementType + " ";
+        s += "Colour: " + ColourType + " ";
 
         return s;
     }
+
 }

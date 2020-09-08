@@ -6,7 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
     public System.Random rnd = new System.Random();
+    public Player player1;
+    public Player player2;
 
     // Start is called before the first frame update
     void Awake()
@@ -21,9 +24,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CheckCardsPlayed()
     {
+        int playerOneElement = (int)player1.cardPlayed.ElementType;
+        int playerTwoElement = (int)player2.cardPlayed.ElementType;
+
+        if ((playerOneElement + 1) % 3 == playerTwoElement)
+        {
+            // Player 1 Win
+        }
+        else if ((playerTwoElement + 1) % 3 == playerOneElement)
+        {
+            // Player 2 Win
+        }
+        // If both cards are the same element.
+        else if (playerOneElement == playerTwoElement)
+        {
+            if (player1.cardPlayed.Value > player2.cardPlayed.Value)
+            {
+                // Player 1 Win
+            }
+            else if (player2.cardPlayed.Value > player1.cardPlayed.Value)
+            {
+                // Player 2 Win
+            }
+            else
+            {
+                // Draw
+            }
+        }
         
     }
 }

@@ -5,28 +5,28 @@ using UnityEngine;
 public class Deck
 {
     private const int DECK_LIMIT = 5;
-    public List<Card> deck = new List<Card>();
+    public List<Card> cardList = new List<Card>();
 
     public Deck()
     {
         for (int i = 0; i < DECK_LIMIT; i++)
         {
-            deck.Add(new Card());
+            cardList.Add(new Card());
         }
     }
 
     public void RemoveCard(int index)
     {
-        deck[index] = null;
+        cardList[index] = null;
     }
 
     public void AddCard()
     {
         for (int i = 0; i < DECK_LIMIT; i++)
         {
-            if (deck[i] == null)
+            if (cardList[i] == null)
             {
-                deck[i] = new Card();
+                cardList[i] = new Card();
             }
         }
     }

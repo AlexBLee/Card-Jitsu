@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Deck deck;
-    Card cardPlayed;
+    public Card cardPlayed;
     bool played;
 
     List<Card> fireCardList = new List<Card>();
@@ -15,11 +15,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         deck = new Deck();
-
-        foreach (Card card in deck.deck)
-        {
-            Debug.Log(card.GetCardStats());
-        }
     }
 
     void PlayCard(Card card)
