@@ -22,4 +22,22 @@ public class Player : MonoBehaviour
         cardPlayed = card;
         deck.RemoveCard(0);
     }
+
+    public void AddWinningCard(Card card)
+    {
+        switch (card.ElementType)
+        {
+            case Card.Element.Fire:
+                fireCardList.Add(card);
+                break;
+
+            case Card.Element.Snow:
+                snowCardList.Add(card);
+                break;
+
+            case Card.Element.Water:
+                waterCardList.Add(card);
+                break;
+        }
+    }
 }

@@ -31,26 +31,22 @@ public class GameManager : MonoBehaviour
 
         if ((playerOneElement + 1) % 3 == playerTwoElement)
         {
-            // Player 1 Win
+            player1.AddWinningCard(player1.cardPlayed);
         }
         else if ((playerTwoElement + 1) % 3 == playerOneElement)
         {
-            // Player 2 Win
+            player2.AddWinningCard(player1.cardPlayed);
         }
         // If both cards are the same element.
         else if (playerOneElement == playerTwoElement)
         {
             if (player1.cardPlayed.Value > player2.cardPlayed.Value)
             {
-                // Player 1 Win
+                player1.AddWinningCard(player1.cardPlayed);
             }
             else if (player2.cardPlayed.Value > player1.cardPlayed.Value)
             {
-                // Player 2 Win
-            }
-            else
-            {
-                // Draw
+                player2.AddWinningCard(player1.cardPlayed);
             }
         }
         
