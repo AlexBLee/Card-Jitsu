@@ -5,7 +5,7 @@ using System.Linq;
 
 public class Player : MonoBehaviour
 {
-    Deck deck;
+    public Deck deck;
     public Card cardPlayed;
     bool played;
 

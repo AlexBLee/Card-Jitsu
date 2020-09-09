@@ -51,4 +51,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void NextTurn()
+    {
+        if (player1.GetWinningConditions())
+        {
+            Debug.Log("Game Over");
+        }
+        else if (player2.GetWinningConditions())
+        {
+            Debug.Log("Game Over");
+        }
+        else
+        {
+            player1.deck.AddCard();
+            player2.deck.AddCard();
+        }
+    }
+
 }
