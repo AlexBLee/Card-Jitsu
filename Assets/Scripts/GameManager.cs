@@ -49,6 +49,6 @@ public class GameManager : MonoBehaviour
                 player2.AddWinningCard(player1.cardPlayed);
             }
         }
-        
     }
+
 }
