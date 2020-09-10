@@ -1423,6 +1423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5141e168a429cd84ea3970d8cda39e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 316532979}
   player1: {fileID: 1106125097}
   player2: {fileID: 760215318}
 --- !u!4 &620419497
