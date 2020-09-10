@@ -1824,10 +1824,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardButtonList:
   - {fileID: 1106461660}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1236312452}
+  - {fileID: 1548941620}
+  - {fileID: 1295423806}
+  - {fileID: 579581139}
 --- !u!4 &1106125098
 Transform:
   m_ObjectHideFlags: 0

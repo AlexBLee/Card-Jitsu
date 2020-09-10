@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public UIManager uiManager;
+
     public System.Random rnd = new System.Random();
     public Player player1;
     public Player player2;
@@ -26,6 +28,15 @@ public class GameManager : MonoBehaviour
 
     public void CheckCardsPlayed()
     {
+        if (player1.cardPlayed == null || player2.cardPlayed == null)
+        {
+            Debug.Log("waiting for other player..");
+            return;
+        }
+
+        Debug.Log(player1.cardPlayed.GetCardStats());
+        Debug.Log(player2.cardPlayed.GetCardStats());
+
         int playerOneElement = (int)player1.cardPlayed.ElementType;
         int playerTwoElement = (int)player2.cardPlayed.ElementType;
 
@@ -49,6 +60,8 @@ public class GameManager : MonoBehaviour
                 player2.AddWinningCard(player1.cardPlayed);
             }
         }
+
+        NextTurn();
     }
 
     public void NextTurn()
@@ -65,6 +78,12 @@ public class GameManager : MonoBehaviour
         {
             player1.deck.AddCard();
             player2.deck.AddCard();
+
+            player1.cardPlayed = null;
+            player2.cardPlayed = null;
+
+            uiManager.UpdateCards();
+            Debug.Log("Turn ended");
         }
     }
 

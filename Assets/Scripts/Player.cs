@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
     {
         cardPlayed = deck.cardList[index];
         deck.RemoveCard(index);
+
+        GameManager.instance.uiManager.UpdateCards();
+        GameManager.instance.CheckCardsPlayed();
     }
 
     public void AddWinningCard(Card card)

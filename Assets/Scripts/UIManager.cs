@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
             if (card == null)
             {
                 cardButton.gameObject.SetActive(false);
+                return;
             }
             else
             {
