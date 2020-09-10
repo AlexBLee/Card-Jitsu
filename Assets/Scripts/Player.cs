@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class Player : MonoBehaviour
@@ -13,15 +14,19 @@ public class Player : MonoBehaviour
     List<Card> waterCardList = new List<Card>();
     List<Card> snowCardList = new List<Card>();
 
+    [SerializeField]
+    List<Button> cardButtonList = new List<Button>();
+
     void Start()
     {
         deck = new Deck();
     }
 
-    void PlayCard(Card card)
+    public void PlayCard(int index)
     {
-        cardPlayed = card;
-        deck.RemoveCard(0);
+        cardPlayed = deck.cardList[index];
+        Debug.Log(cardPlayed.GetCardStats());
+        deck.RemoveCard(index);
     }
 
     public void AddWinningCard(Card card)
