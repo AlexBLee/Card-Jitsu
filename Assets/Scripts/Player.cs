@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
     public void PlayCard(int index)
     {
         cardPlayed = deck.cardList[index];
-        Debug.Log(cardPlayed.GetCardStats());
         deck.RemoveCard(index);
     }
 
