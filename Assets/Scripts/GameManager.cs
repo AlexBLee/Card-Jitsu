@@ -26,6 +26,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            player2.PlayCard(rnd.Next(5));
+        }    
+    }
+
     public void CheckCardsPlayed()
     {
         if (player1.cardPlayed == null || player2.cardPlayed == null)
@@ -82,6 +89,7 @@ public class GameManager : MonoBehaviour
             player1.cardPlayed = null;
             player2.cardPlayed = null;
 
+            uiManager.MoveCardToInitPosition();
             uiManager.UpdateCards();
             Debug.Log("Turn ended");
         }

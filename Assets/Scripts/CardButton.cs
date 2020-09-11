@@ -8,6 +8,11 @@ public class CardButton : MonoBehaviour
 {
     public TextMeshProUGUI number;
     public TextMeshProUGUI elemType;
+    public Vector2 formerPosition;
+
+    private void Awake() {
+        formerPosition = GetComponent<RectTransform>().position;
+    }
     
     public void UpdateCard(int numb, Card.Element element, Color color)
     {

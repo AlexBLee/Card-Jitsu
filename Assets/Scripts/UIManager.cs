@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     RectTransform cardCenterPosition2;
 
+    CardButton centerCard;
+
     private void Start() 
     {
         UpdateCards();
@@ -74,11 +76,16 @@ public class UIManager : MonoBehaviour
     {
         if (id == 0)
         {
+            centerCard = cardButtonList[index];
             iTween.MoveTo(cardButtonList[index].gameObject, cardCenterPosition1.position, 0.5f);
         }
-        else
-        {
-            iTween.MoveTo(cardButtonList[index].gameObject, cardCenterPosition2.position, 0.5f);
-        }
     }
+
+    public void MoveCardToInitPosition()
+    {
+        centerCard.gameObject.SetActive(false);
+        centerCard.transform.position = centerCard.formerPosition;
+        centerCard.gameObject.SetActive(true);
+    }
+
 }
