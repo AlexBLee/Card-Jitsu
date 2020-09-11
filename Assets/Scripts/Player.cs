@@ -6,6 +6,8 @@ using System.Linq;
 
 public class Player : MonoBehaviour
 {
+    public int playerID = 0;
+
     public Deck deck;
     public Card cardPlayed;
     bool played;
@@ -25,6 +27,8 @@ public class Player : MonoBehaviour
     public void PlayCard(int index)
     {
         cardPlayed = deck.cardList[index];
+        GameManager.instance.uiManager.MoveCardToCenter(index, playerID);
+
         deck.RemoveCard(index);
 
         GameManager.instance.uiManager.UpdateCards();

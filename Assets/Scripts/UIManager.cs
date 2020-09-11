@@ -8,6 +8,12 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     List<CardButton> cardButtonList = new List<CardButton>();
 
+    [SerializeField]
+    RectTransform cardCenterPosition1;
+
+    [SerializeField]
+    RectTransform cardCenterPosition2;
+
     private void Start() 
     {
         UpdateCards();
@@ -25,7 +31,7 @@ public class UIManager : MonoBehaviour
 
             if (card == null)
             {
-                cardButton.gameObject.SetActive(false);
+                // cardButton.gameObject.SetActive(false);
                 return;
             }
             else
@@ -59,9 +65,20 @@ public class UIManager : MonoBehaviour
                     color = Color.red;
                     break;
             }
-
             cardButton.UpdateCard(card.Value, card.ElementType, color);
             counter++;
+        }
+    }
+
+    public void MoveCardToCenter(int index, int id)
+    {
+        if (id == 0)
+        {
+            iTween.MoveTo(cardButtonList[index].gameObject, cardCenterPosition1.position, 0.5f);
+        }
+        else
+        {
+            iTween.MoveTo(cardButtonList[index].gameObject, cardCenterPosition2.position, 0.5f);
         }
     }
 }
