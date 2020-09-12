@@ -96,13 +96,20 @@ public class UIManager : MonoBehaviour
     public void MoveCardsToInitPosition()
     {
         centerCard.gameObject.SetActive(false);
-        centerCard.transform.position = centerCard.formerPosition;
+        centerCard.transform.position = centerCard.formerPosition - new Vector2(0, 300);
         centerCard.gameObject.SetActive(true);
+        iTween.MoveTo(centerCard.gameObject, centerCard.formerPosition, 0.7f);
 
         centerCard2.gameObject.SetActive(false);
-        centerCard2.transform.position = centerCard2.formerPosition;
-        centerCard2.transform.localScale = centerCard2.formerScale;
+        centerCard2.transform.position = centerCard2.formerPosition - new Vector2(0, 300);
+
+        // For some reason, changing transform.localScales works very inconsistently, however using
+        // iTween's ScaleTo makes the scaling work 100% of the time.
+        iTween.ScaleTo(centerCard2.gameObject, centerCard2.formerScale, 0f);
+        
         centerCard2.gameObject.SetActive(true);
+        iTween.MoveTo(centerCard2.gameObject, centerCard2.formerPosition, 0.7f);
+
     }
 
 }
