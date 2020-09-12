@@ -93,7 +93,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void MoveCardToInitPosition()
+    public void MoveCardsToInitPosition()
     {
         centerCard.gameObject.SetActive(false);
         centerCard.transform.position = centerCard.formerPosition;
@@ -101,6 +101,7 @@ public class UIManager : MonoBehaviour
 
         centerCard2.gameObject.SetActive(false);
         centerCard2.transform.position = centerCard2.formerPosition;
+        centerCard2.transform.localScale = centerCard2.formerScale;
         centerCard2.gameObject.SetActive(true);
     }
 

@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
             player1.cardPlayed = null;
             player2.cardPlayed = null;
 
-            uiManager.MoveCardToInitPosition();
+            uiManager.MoveCardsToInitPosition();
             uiManager.UpdateCards();
             Debug.Log("Turn ended");
         }
