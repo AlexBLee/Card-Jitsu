@@ -31,6 +31,12 @@ public class GameManager : MonoBehaviour
         {
             player2.PlayCard(rnd.Next(5));
         }    
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            CheckCardsPlayed();
+        }   
+
     }
 
     public void CheckCardsPlayed()

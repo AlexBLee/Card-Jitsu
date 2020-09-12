@@ -30,9 +30,7 @@ public class Player : MonoBehaviour
         GameManager.instance.uiManager.MoveCardToCenter(index, playerID);
 
         deck.RemoveCard(index);
-
         GameManager.instance.uiManager.UpdateCards();
-        GameManager.instance.CheckCardsPlayed();
     }
 
     public void AddWinningCard(Card card)

@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
     List<CardButton> cardButtonList = new List<CardButton>();
+
+    [SerializeField]
+    List<CardImage> imageList = new List<CardImage>();
 
     [SerializeField]
     RectTransform cardCenterPosition1;
@@ -15,6 +19,8 @@ public class UIManager : MonoBehaviour
     RectTransform cardCenterPosition2;
 
     CardButton centerCard;
+    CardImage centerCard2;
+
 
     private void Start() 
     {
@@ -79,6 +85,12 @@ public class UIManager : MonoBehaviour
             centerCard = cardButtonList[index];
             iTween.MoveTo(cardButtonList[index].gameObject, cardCenterPosition1.position, 0.5f);
         }
+        else
+        {
+            centerCard2 = imageList[index];
+            iTween.MoveTo(imageList[index].gameObject, cardCenterPosition2.position, 0.5f);
+            iTween.ScaleTo(imageList[index].gameObject, new Vector3(1,1,1), 0.5f);
+        }
     }
 
     public void MoveCardToInitPosition()
@@ -86,6 +98,10 @@ public class UIManager : MonoBehaviour
         centerCard.gameObject.SetActive(false);
         centerCard.transform.position = centerCard.formerPosition;
         centerCard.gameObject.SetActive(true);
+
+        centerCard2.gameObject.SetActive(false);
+        centerCard2.transform.position = centerCard2.formerPosition;
+        centerCard2.gameObject.SetActive(true);
     }
 
 }
