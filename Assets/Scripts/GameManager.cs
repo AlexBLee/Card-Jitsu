@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("waiting for other player..");
             return;
         }
+        
+        // Used for the card winning animation to determine which cards on screen will do the winning animation.
+        bool playerOneWin = false;
 
         Debug.Log(player1.cardPlayed.GetCardStats());
         Debug.Log(player2.cardPlayed.GetCardStats());
@@ -56,6 +59,7 @@ public class GameManager : MonoBehaviour
         if ((playerOneElement + 1) % 3 == playerTwoElement)
         {
             player1.AddWinningCard(player1.cardPlayed);
+            playerOneWin = true;
         }
         else if ((playerTwoElement + 1) % 3 == playerOneElement)
         {
@@ -67,13 +71,14 @@ public class GameManager : MonoBehaviour
             if (player1.cardPlayed.Value > player2.cardPlayed.Value)
             {
                 player1.AddWinningCard(player1.cardPlayed);
+                playerOneWin = true;
             }
             else if (player2.cardPlayed.Value > player1.cardPlayed.Value)
             {
                 player2.AddWinningCard(player1.cardPlayed);
             }
         }
-
+        StartCoroutine(uiManager.PlayCardWinningAnimation(playerOneWin));
         NextTurn();
     }
 
@@ -95,8 +100,6 @@ public class GameManager : MonoBehaviour
             player1.cardPlayed = null;
             player2.cardPlayed = null;
 
-            uiManager.MoveCardsToInitPosition();
-            uiManager.UpdateCards();
             Debug.Log("Turn ended");
         }
     }

@@ -98,6 +98,7 @@ public class UIManager : MonoBehaviour
         centerCard.gameObject.SetActive(false);
         centerCard.transform.position = centerCard.formerPosition - new Vector2(0, 300);
         centerCard.gameObject.SetActive(true);
+        iTween.ScaleTo(centerCard.gameObject, new Vector3(1,1,1), 0f);
         iTween.MoveTo(centerCard.gameObject, centerCard.formerPosition, 0.7f);
 
         centerCard2.gameObject.SetActive(false);
@@ -110,6 +111,19 @@ public class UIManager : MonoBehaviour
         centerCard2.gameObject.SetActive(true);
         iTween.MoveTo(centerCard2.gameObject, centerCard2.formerPosition, 0.7f);
 
+    }
+
+    public IEnumerator PlayCardWinningAnimation(bool player1Win)
+    {
+        GameObject winningCard = (player1Win == true) ? centerCard.gameObject : centerCard2.gameObject;
+        GameObject losingCard = (player1Win == true) ? centerCard2.gameObject : centerCard.gameObject;
+
+        iTween.ScaleTo(losingCard.gameObject, new Vector3(0,0,0), 0.5f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        MoveCardsToInitPosition();
+        UpdateCards();
     }
 
 }
