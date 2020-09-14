@@ -20,4 +20,13 @@ public class CardButton : MonoBehaviour
         elemType.text = element.ToString();
         GetComponent<Image>().color = color;
     }
+
+    public void ResetCard()
+    {
+        gameObject.SetActive(false);
+        transform.position = formerPosition - new Vector2(0, 300);
+        gameObject.SetActive(true);
+        iTween.ScaleTo(gameObject, new Vector3(1,1,1), 0f);
+        iTween.MoveTo(gameObject, formerPosition, 0.7f);
+    }
 }

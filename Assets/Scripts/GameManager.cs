@@ -50,9 +50,6 @@ public class GameManager : MonoBehaviour
         // Used for the card winning animation to determine which cards on screen will do the winning animation.
         bool playerOneWin = false;
 
-        Debug.Log(player1.cardPlayed.GetCardStats());
-        Debug.Log(player2.cardPlayed.GetCardStats());
-
         int playerOneElement = (int)player1.cardPlayed.ElementType;
         int playerTwoElement = (int)player2.cardPlayed.ElementType;
 
@@ -103,5 +100,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("Turn ended");
         }
     }
+    
 
 }

@@ -27,6 +27,12 @@ public class UIManager : MonoBehaviour
         UpdateCards();
     }
 
+    public void ResetCards()
+    {
+        centerCard.ResetCard();
+        centerCard2.ResetCard();
+    }
+
     public void UpdateCards()
     {
         Deck deck = GameManager.instance.player1.deck;
@@ -93,28 +99,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void MoveCardsToInitPosition()
-    {
-        centerCard.gameObject.SetActive(false);
-        centerCard.transform.position = centerCard.formerPosition - new Vector2(0, 300);
-        centerCard.gameObject.SetActive(true);
-        iTween.ScaleTo(centerCard.gameObject, new Vector3(1,1,1), 0f);
-        iTween.MoveTo(centerCard.gameObject, centerCard.formerPosition, 0.7f);
-
-        centerCard2.gameObject.SetActive(false);
-        centerCard2.transform.position = centerCard2.formerPosition - new Vector2(0, 300);
-
-        // For some reason, changing transform.localScales works very inconsistently, however using
-        // iTween's ScaleTo makes the scaling work 100% of the time.
-        iTween.ScaleTo(centerCard2.gameObject, centerCard2.formerScale, 0f);
-        
-        centerCard2.gameObject.SetActive(true);
-        iTween.MoveTo(centerCard2.gameObject, centerCard2.formerPosition, 0.7f);
-
-    }
-
     public IEnumerator PlayCardWinningAnimation(bool player1Win)
     {
+        StartCoroutine(centerCard2.FlipImage());
+
+        yield return new WaitForSeconds(1.0f);
+
         GameObject winningCard = (player1Win == true) ? centerCard.gameObject : centerCard2.gameObject;
         GameObject losingCard = (player1Win == true) ? centerCard2.gameObject : centerCard.gameObject;
 
@@ -122,7 +112,7 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        MoveCardsToInitPosition();
+        ResetCards();
         UpdateCards();
     }
 
