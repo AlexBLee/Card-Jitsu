@@ -13,8 +13,11 @@ public class CardDisplay : MonoBehaviour
     protected TextMeshProUGUI number;
 
     [SerializeField]
-    protected TextMeshProUGUI elemType;
+    protected Image iconDisplay;
     
+    [SerializeField]
+    private List<Sprite> icons = new List<Sprite>();
+
     protected Vector2 formerPosition;
 
     private void Awake() 
@@ -25,7 +28,6 @@ public class CardDisplay : MonoBehaviour
     public void UpdateCard()
     {
         number.text = card.Value.ToString();
-        elemType.text = card.ElementType.ToString();
 
         Color colour = new Color(0,0,0);
 
@@ -53,6 +55,21 @@ public class CardDisplay : MonoBehaviour
 
             case Card.Colour.Red:
                 colour = Color.red;
+                break;
+        }
+
+        switch (card.ElementType)
+        {
+            case Card.Element.Water:
+                iconDisplay.sprite = icons[0];
+                break;
+
+            case Card.Element.Fire:
+                iconDisplay.sprite = icons[1];
+                break;
+
+            case Card.Element.Snow:
+                iconDisplay.sprite = icons[2];
                 break;
         }
 
