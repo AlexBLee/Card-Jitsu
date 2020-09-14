@@ -1,10 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 
 public class CardButton : CardDisplay
 {
+    public Button button;
+
+    private void Start() {
+        button = GetComponent<Button>();
+    }
+
     public override void ResetCard()
     {
         gameObject.SetActive(false);

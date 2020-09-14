@@ -57,6 +57,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void SetButtonsActive(bool state)
+    {
+        foreach (CardButton cardButton in cardButtonList)
+        {
+            cardButton.button.interactable = state;
+        }
+    }
+
     public void MoveCardToCenter(int index, int id)
     {
         if (id == 0)

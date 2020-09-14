@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     {
         cardPlayed = deck.cardList[index];
         GameManager.instance.uiManager.MoveCardToCenter(index, playerID);
+        GameManager.instance.uiManager.SetButtonsActive(false);
 
         deck.RemoveCard(index);
         GameManager.instance.uiManager.UpdateCards();
