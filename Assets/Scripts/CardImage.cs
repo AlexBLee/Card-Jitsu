@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class CardImage : CardDisplay
 {
-    public Vector2 formerScale { get; set; }
-    public GameObject stats;
+    private Vector2 formerScale { get; set; }
+
+    [SerializeField]
+    private GameObject stats;
 
     private void Awake() 
     {
