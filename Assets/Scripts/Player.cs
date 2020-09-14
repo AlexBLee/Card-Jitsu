@@ -40,14 +40,17 @@ public class Player : MonoBehaviour
         {
             case Card.Element.Fire:
                 fireCardList.Add(card);
+                GameManager.instance.uiManager.DisplayWinningCard(card, playerID, fireCardList.Count);
                 break;
 
             case Card.Element.Snow:
                 snowCardList.Add(card);
+                GameManager.instance.uiManager.DisplayWinningCard(card, playerID, snowCardList.Count);
                 break;
 
             case Card.Element.Water:
                 waterCardList.Add(card);
+                GameManager.instance.uiManager.DisplayWinningCard(card, playerID, waterCardList.Count);
                 break;
         }
     }

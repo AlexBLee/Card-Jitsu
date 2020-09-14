@@ -21,6 +21,11 @@ public class UIManager : MonoBehaviour
     CardButton centerCard;
     CardImage centerCard2;
 
+    [SerializeField]
+    List<RectTransform> winningCardXCoorList = new List<RectTransform>();
+
+    public GameObject winningCardDisplay;
+
 
     private void Start() 
     {
@@ -99,4 +104,16 @@ public class UIManager : MonoBehaviour
         UpdateCards();
     }
 
+    public void DisplayWinningCard(Card card, int playerID, int length)
+    {
+        Transform canvas = GameObject.Find("Canvas").transform;
+        int xOffset = playerID == 0 ? 0 : 3; // Determine which side the cards should show up on.
+        float yOffset = -20.0f;
+        int pos = (int)card.ElementType;
+
+        Instantiate(winningCardDisplay, 
+                    new Vector3(winningCardXCoorList[pos + xOffset].position.x, 
+                                winningCardXCoorList[pos + xOffset].position.y + (yOffset * length)),
+                    Quaternion.identity, canvas);
+    }
 }
