@@ -24,8 +24,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     List<RectTransform> winningCardXCoorList = new List<RectTransform>();
 
-    public GameObject winningCardDisplay;
-
+    public CardImage winningCardDisplay;
 
     private void Start() 
     {
@@ -111,9 +110,14 @@ public class UIManager : MonoBehaviour
         float yOffset = -20.0f;
         int pos = (int)card.ElementType;
 
+        winningCardDisplay.card = card;
+        winningCardDisplay.UpdateCard();
+        winningCardDisplay.stats.SetActive(true);
+
         Instantiate(winningCardDisplay, 
                     new Vector3(winningCardXCoorList[pos + xOffset].position.x, 
                                 winningCardXCoorList[pos + xOffset].position.y + (yOffset * length)),
                     Quaternion.identity, canvas);
+
     }
 }

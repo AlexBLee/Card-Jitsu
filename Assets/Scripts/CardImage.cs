@@ -8,7 +8,7 @@ public class CardImage : CardDisplay
     private Vector2 formerScale { get; set; }
 
     [SerializeField]
-    private GameObject stats;
+    public GameObject stats;
 
     private void Awake() 
     {

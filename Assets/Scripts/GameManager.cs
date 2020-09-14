@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
         else if ((playerTwoElement + 1) % 3 == playerOneElement)
         {
-            player2.AddWinningCard(player1.cardPlayed);
+            player2.AddWinningCard(player2.cardPlayed);
         }
         // If both cards are the same element.
         else if (playerOneElement == playerTwoElement)
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
             }
             else if (player2.cardPlayed.Value > player1.cardPlayed.Value)
             {
-                player2.AddWinningCard(player1.cardPlayed);
+                player2.AddWinningCard(player2.cardPlayed);
             }
         }
         StartCoroutine(uiManager.PlayCardWinningAnimation(playerOneWin, player2.cardPlayed));
