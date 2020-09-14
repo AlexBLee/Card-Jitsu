@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CardImage : MonoBehaviour
+public class CardImage : CardDisplay
 {
-    public Vector2 formerPosition { get; set; }
     public Vector2 formerScale { get; set; }
-
     public GameObject stats;
 
-    private void Awake() {
+    private void Awake() 
+    {
         formerPosition = GetComponent<RectTransform>().position;
         formerScale = transform.localScale;
     }
@@ -19,12 +19,13 @@ public class CardImage : MonoBehaviour
         iTween.RotateTo(gameObject, new Vector3(0,90,0), 0.5f);
 
         yield return new WaitForSeconds(0.1f);
+        UpdateCard();
         stats.SetActive(true);
 
-        iTween.RotateTo(gameObject, new Vector3(0,180,0), 0.5f);
+        iTween.RotateTo(gameObject, new Vector3(0,0,0), 0.5f);
     }
 
-    public void ResetCard()
+    public override void ResetCard()
     {
         stats.SetActive(false);
 
@@ -37,5 +38,7 @@ public class CardImage : MonoBehaviour
         
         gameObject.SetActive(true);
         iTween.MoveTo(gameObject, formerPosition, 0.7f);
+
+        GetComponent<Image>().color = Color.white;
     }
 }

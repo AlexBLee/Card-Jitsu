@@ -41,45 +41,18 @@ public class UIManager : MonoBehaviour
         foreach (CardButton cardButton in cardButtonList)
         {
             Card card = deck.cardList[counter];
-            Color color = new Color(0,0,0);
 
             if (card == null)
             {
-                // cardButton.gameObject.SetActive(false);
                 return;
             }
             else
             {
+                cardButton.card = card;
                 cardButton.gameObject.SetActive(true);
             }
-            
-            switch (card.ColourType)
-            {
-                case Card.Colour.Blue:
-                    color = Color.blue;
-                    break;
 
-                case Card.Colour.Green:
-                    color = Color.green;
-                    break;
-
-                case Card.Colour.Orange:
-                    color = new Color(255,165,0);
-                    break;
-
-                case Card.Colour.Purple:
-                    color = new Color(75,0,130);
-                    break;
-
-                case Card.Colour.Yellow:
-                    color = Color.yellow;
-                    break;
-
-                case Card.Colour.Red:
-                    color = Color.red;
-                    break;
-            }
-            cardButton.UpdateCard(card.Value, card.ElementType, color);
+            cardButton.UpdateCard();
             counter++;
         }
     }
@@ -99,8 +72,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public IEnumerator PlayCardWinningAnimation(bool player1Win)
+    public IEnumerator PlayCardWinningAnimation(bool player1Win, Card player2Card)
     {
+        centerCard2.card = player2Card;
+        
         StartCoroutine(centerCard2.FlipImage());
 
         yield return new WaitForSeconds(1.0f);

@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
                 player2.AddWinningCard(player1.cardPlayed);
             }
         }
-        StartCoroutine(uiManager.PlayCardWinningAnimation(playerOneWin));
+        StartCoroutine(uiManager.PlayCardWinningAnimation(playerOneWin, player2.cardPlayed));
         NextTurn();
     }
 
