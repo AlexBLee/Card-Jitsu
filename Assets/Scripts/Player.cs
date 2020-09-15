@@ -57,18 +57,22 @@ public class Player : MonoBehaviour
 
     public bool GetWinningConditions()
     {
+        int fireColourCount = fireCardList.GroupBy(x => x.ColourType).Select(g => g.First()).ToList().Count;
+        int snowColourCount = snowCardList.GroupBy(x => x.ColourType).Select(g => g.First()).ToList().Count;
+        int waterColourCount = waterCardList.GroupBy(x => x.ColourType).Select(g => g.First()).ToList().Count;
+
         if (fireCardList.Count >= 1 && 
             snowCardList.Count >= 1 && 
             waterCardList.Count >= 1)
         {
             return true;
         }
-
-        // TODO: Fully implement
-        // Win through matching 3 of a colour..
-        // List<Card> dis = fireCardList.GroupBy(x => x.ElementType).Select(g => g.First()).ToList();
-        // if dis.Count == 3??
-
+        else if (fireColourCount == 3 ||
+                 snowColourCount == 3 ||
+                 waterColourCount == 3)
+        {
+            return true;
+        }
 
         return false;
     }
