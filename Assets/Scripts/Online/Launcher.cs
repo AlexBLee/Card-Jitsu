@@ -16,7 +16,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     // Scene
     [SerializeField] private GameObject controlPanel = null;
-    [SerializeField] private GameObject progressLabel = null;
+    [SerializeField] private TextMeshProUGUI progressLabel = null;
     [SerializeField] private Button connectButton = null;
     [SerializeField] private InputField inputField;
 
@@ -42,7 +42,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     private void Connect()
     {
-        progressLabel.SetActive(true);
+        progressLabel.gameObject.SetActive(true);
         controlPanel.SetActive(false);
 
         // Check if we're connected or not, we join if we are, else we initiate connection to server.
@@ -76,7 +76,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void LoadLevel()
     {
-        PhotonNetwork.LoadLevel("Main Multiplayer Test");
+        PhotonNetwork.LoadLevel("Main");
     }
 
 
@@ -100,7 +100,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        progressLabel.SetActive(false);
+        progressLabel.gameObject.SetActive(false);
         controlPanel.SetActive(true);
         isConnecting = false;
 
@@ -115,9 +115,22 @@ public class Launcher : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
     }
 
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 2 && PhotonNetwork.IsMasterClient)
+        {
+            LoadLevel();
+        }
+    }
+
     public override void OnJoinedRoom()
     {
         Debug.Log("Client is now in room..");
+
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+        {
+            progressLabel.text = "Waiting for another player..";
+        }
     }
 
 
