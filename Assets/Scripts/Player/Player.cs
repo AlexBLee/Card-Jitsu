@@ -68,11 +68,10 @@ public class Player : MonoBehaviour
             }
         }
 
-
-
-
         GameManager.instance.uiManager.MoveCardToCenter(index, playerID);
-        // GameManager.instance.uiManager.SetButtonsActive(false);
+        GameManager.instance.uiManager.GetComponent<PhotonView>().RPC("MoveCardToCenter", RpcTarget.Others, index, 1);
+        
+        GameManager.instance.uiManager.SetButtonsActive(false);
 
         deck.RemoveCard(index);
         GameManager.instance.uiManager.UpdateCards();

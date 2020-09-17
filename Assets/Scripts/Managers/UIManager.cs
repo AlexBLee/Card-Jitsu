@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Photon.Pun;
 
 public class UIManager : MonoBehaviour
 {
@@ -69,6 +69,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public void MoveCardToCenter(int index, int id)
     {
         if (id == 0)
