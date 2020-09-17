@@ -3,16 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager instance;
 
     public System.Random rnd = new System.Random();
     public Player player1;
     public Player player2;
-
-    public PhotonView photonView;
 
     // Start is called before the first frame update
     void Awake()
@@ -26,7 +25,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        photonView = GetComponent<PhotonView>();
     }
 
     [PunRPC]
@@ -106,5 +104,18 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public void QuitToMenu()
+    {
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+    }
+
+    public override void OnLeftRoom()
+    {
+        SceneManager.LoadScene("Menu");
+        Debug.Log("Player left room");
+    }
 
 }
