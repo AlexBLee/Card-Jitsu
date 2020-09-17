@@ -38,13 +38,14 @@ public class Player : MonoBehaviour
             AddCardToRoomProperties("p2Card");
         }
 
-        GameManager.instance.uiManager.MoveCardToCenter(index, playerID);
+        UIManager.instance.MoveCardToCenter(index, playerID);
         GameManager.instance.photonView.RPC("AddCardToOtherPlayer", RpcTarget.Others);
-        GameManager.instance.uiManager.photonView.RPC("MoveCardToCenter", RpcTarget.Others, index, 1);
+        UIManager.instance.photonView.RPC("MoveCardToCenter", RpcTarget.Others, index, 1);
 
-        GameManager.instance.uiManager.SetButtonsActive(false);
+        UIManager.instance.SetButtonsActive(false);
         deck.RemoveCard(index);
-        GameManager.instance.uiManager.UpdateCards();
+        UIManager.instance.UpdateCards();
+
         GameManager.instance.photonView.RPC("CheckCardsPlayed", RpcTarget.All);
 
 
@@ -56,17 +57,17 @@ public class Player : MonoBehaviour
         {
             case Card.Element.Fire:
                 fireCardList.Add(card);
-                GameManager.instance.uiManager.DisplayWinningCard(card, playerID, fireCardList.Count);
+                UIManager.instance.DisplayWinningCard(card, playerID, fireCardList.Count);
                 break;
 
             case Card.Element.Snow:
                 snowCardList.Add(card);
-                GameManager.instance.uiManager.DisplayWinningCard(card, playerID, snowCardList.Count);
+                UIManager.instance.DisplayWinningCard(card, playerID, snowCardList.Count);
                 break;
 
             case Card.Element.Water:
                 waterCardList.Add(card);
-                GameManager.instance.uiManager.DisplayWinningCard(card, playerID, waterCardList.Count);
+                UIManager.instance.DisplayWinningCard(card, playerID, waterCardList.Count);
                 break;
         }
     }

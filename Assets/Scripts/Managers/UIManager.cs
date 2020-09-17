@@ -6,6 +6,8 @@ using Photon.Pun;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+
     [SerializeField]
     List<CardButton> cardButtonList = new List<CardButton>();
 
@@ -28,10 +30,20 @@ public class UIManager : MonoBehaviour
 
     public PhotonView photonView;
 
-    private void Start() 
+    void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         photonView = GetComponent<PhotonView>();
         UpdateCards();
+
     }
 
     public void ResetCards()

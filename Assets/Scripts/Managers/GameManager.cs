@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public UIManager uiManager;
-
     public System.Random rnd = new System.Random();
     public Player player1;
     public Player player2;
@@ -77,7 +75,7 @@ public class GameManager : MonoBehaviour
                 player2.AddWinningCard(player2.cardPlayed);
             }
         }
-        StartCoroutine(uiManager.PlayCardWinningAnimation(playerOneWin, player2.cardPlayed));
+        StartCoroutine(UIManager.instance.PlayCardWinningAnimation(playerOneWin, player2.cardPlayed));
         NextTurn();
     }
 
@@ -99,7 +97,7 @@ public class GameManager : MonoBehaviour
             player1.cardPlayed = null;
             player2.cardPlayed = null;
 
-            uiManager.SetButtonsActive(true);
+            UIManager.instance.SetButtonsActive(true);
             
             Debug.Log("Turn ended");
         }
