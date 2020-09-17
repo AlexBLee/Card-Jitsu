@@ -27,12 +27,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update() {
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            GetComponent<PhotonView>().RPC("CheckCardsPlayed", RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
     public void CheckCardsPlayed()
     {
-        if (player1.cardPlayed == null || player2.cardPlayed == null)
+        if (PhotonNetwork.IsMasterClient)
         {
-            Debug.Log("waiting for other player..");
-            return;
+            player2.cardPlayed = (Card)PhotonNetwork.CurrentRoom.CustomProperties["p2Card"];
+        }
+        else
+        {
+            player2.cardPlayed = (Card)PhotonNetwork.CurrentRoom.CustomProperties["p1Card"];
+
         }
         
         // Used for the card winning animation to determine which cards on screen will do the winning animation.
