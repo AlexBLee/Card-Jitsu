@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public Player player1;
     public Player player2;
 
+    public PhotonView photonView;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,27 +27,26 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        photonView = GetComponent<PhotonView>();
     }
 
-    private void Update() {
+    [PunRPC]
+    public void AddCardToOtherPlayer()
+    {
+        string key = "";
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            GetComponent<PhotonView>().RPC("CheckCardsPlayed", RpcTarget.All);
-        }
+        key = (PhotonNetwork.IsMasterClient) ? "p2Card" : "p1Card";
+        player2.cardPlayed = (Card)PhotonNetwork.CurrentRoom.CustomProperties[key];
     }
 
     [PunRPC]
     public void CheckCardsPlayed()
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (player1.cardPlayed == null || player2.cardPlayed == null)
         {
-            player2.cardPlayed = (Card)PhotonNetwork.CurrentRoom.CustomProperties["p2Card"];
-        }
-        else
-        {
-            player2.cardPlayed = (Card)PhotonNetwork.CurrentRoom.CustomProperties["p1Card"];
-
+            Debug.Log("waiting for other player..");
+            return;
         }
         
         // Used for the card winning animation to determine which cards on screen will do the winning animation.

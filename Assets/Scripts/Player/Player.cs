@@ -39,12 +39,15 @@ public class Player : MonoBehaviour
         }
 
         GameManager.instance.uiManager.MoveCardToCenter(index, playerID);
-        GameManager.instance.uiManager.GetComponent<PhotonView>().RPC("MoveCardToCenter", RpcTarget.Others, index, 1);
+        GameManager.instance.photonView.RPC("AddCardToOtherPlayer", RpcTarget.Others);
+        GameManager.instance.uiManager.photonView.RPC("MoveCardToCenter", RpcTarget.Others, index, 1);
 
         GameManager.instance.uiManager.SetButtonsActive(false);
-
         deck.RemoveCard(index);
         GameManager.instance.uiManager.UpdateCards();
+        GameManager.instance.photonView.RPC("CheckCardsPlayed", RpcTarget.All);
+
+
     }
 
     public void AddWinningCard(Card card)

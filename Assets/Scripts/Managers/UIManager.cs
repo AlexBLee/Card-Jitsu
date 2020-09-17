@@ -26,8 +26,11 @@ public class UIManager : MonoBehaviour
 
     public CardImage winningCardDisplay;
 
+    public PhotonView photonView;
+
     private void Start() 
     {
+        photonView = GetComponent<PhotonView>();
         UpdateCards();
     }
 
@@ -89,6 +92,8 @@ public class UIManager : MonoBehaviour
     {
         centerCard2.card = player2Card;
         
+        yield return new WaitForSeconds(0.5f);
+
         StartCoroutine(centerCard2.FlipImage());
 
         yield return new WaitForSeconds(1.0f);
