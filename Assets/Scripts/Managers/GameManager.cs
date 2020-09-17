@@ -75,18 +75,21 @@ public class GameManager : MonoBehaviour
                 player2.AddWinningCard(player2.cardPlayed);
             }
         }
+
         StartCoroutine(UIManager.instance.PlayCardWinningAnimation(playerOneWin, player2.cardPlayed));
-        NextTurn();
+        StartCoroutine(NextTurn());
     }
 
-    public void NextTurn()
+    public IEnumerator NextTurn()
     {
         if (player1.GetWinningConditions())
         {
+            yield return new WaitForSeconds(2);
             UIManager.instance.DisplayGameOverMessage("You won!");
         }
         else if (player2.GetWinningConditions())
         {
+            yield return new WaitForSeconds(2);
             UIManager.instance.DisplayGameOverMessage("You lost.");
         }
         else
