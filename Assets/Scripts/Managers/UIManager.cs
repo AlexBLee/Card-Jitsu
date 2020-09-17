@@ -19,10 +19,10 @@ public class UIManager : MonoBehaviour
 
     CardButton centerCard;
     CardImage centerCard2;
-    CardImage winningCardDisplay;
 
-    GameObject gameOverPanel;
-    TextMeshProUGUI winText;
+    [SerializeField] CardImage winningCardDisplay;
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] TextMeshProUGUI winText;
     public PhotonView photonView;
 
     void Awake()

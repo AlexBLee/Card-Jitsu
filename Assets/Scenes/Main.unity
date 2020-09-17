@@ -627,6 +627,8 @@ MonoBehaviour:
   - {fileID: 306907082}
   winningCardDisplay: {fileID: 7393387854885849560, guid: 624b91c13755cb04b8c5d10da6282aae,
     type: 3}
+  gameOverPanel: {fileID: 692785320}
+  winText: {fileID: 1388821145}
   photonView: {fileID: 0}
 --- !u!4 &316532980
 Transform:
@@ -1752,7 +1754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &692785321
 RectTransform:
   m_ObjectHideFlags: 0
