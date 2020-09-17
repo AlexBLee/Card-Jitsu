@@ -3,31 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    [SerializeField]
-    List<CardButton> cardButtonList = new List<CardButton>();
+    [SerializeField] List<CardButton> cardButtonList = new List<CardButton>();
+    [SerializeField] List<CardImage> imageList = new List<CardImage>();
 
-    [SerializeField]
-    List<CardImage> imageList = new List<CardImage>();
+    [SerializeField] RectTransform cardCenterPosition1;
+    [SerializeField] RectTransform cardCenterPosition2;
 
-    [SerializeField]
-    RectTransform cardCenterPosition1;
-
-    [SerializeField]
-    RectTransform cardCenterPosition2;
+    [SerializeField] List<RectTransform> winningCardXCoorList = new List<RectTransform>();
 
     CardButton centerCard;
     CardImage centerCard2;
+    CardImage winningCardDisplay;
 
-    [SerializeField]
-    List<RectTransform> winningCardXCoorList = new List<RectTransform>();
-
-    public CardImage winningCardDisplay;
-
+    GameObject gameOverPanel;
+    TextMeshProUGUI winText;
     public PhotonView photonView;
 
     void Awake()
@@ -141,5 +136,11 @@ public class UIManager : MonoBehaviour
                                 winningCardXCoorList[pos + xOffset].position.y + (yOffset * length)),
                     Quaternion.identity, canvas);
 
+    }
+
+    public void DisplayGameOverMessage(string winResult)
+    {
+        gameOverPanel.SetActive(true);
+        winText.text = winResult;
     }
 }

@@ -47,8 +47,6 @@ public class Player : MonoBehaviour
         UIManager.instance.UpdateCards();
 
         GameManager.instance.photonView.RPC("CheckCardsPlayed", RpcTarget.All);
-
-
     }
 
     public void AddWinningCard(Card card)

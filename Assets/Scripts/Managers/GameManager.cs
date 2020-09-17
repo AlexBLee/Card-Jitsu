@@ -83,11 +83,11 @@ public class GameManager : MonoBehaviour
     {
         if (player1.GetWinningConditions())
         {
-            Debug.Log("Game Over");
+            UIManager.instance.DisplayGameOverMessage("You won!");
         }
         else if (player2.GetWinningConditions())
         {
-            Debug.Log("Game Over");
+            UIManager.instance.DisplayGameOverMessage("You lost.");
         }
         else
         {
