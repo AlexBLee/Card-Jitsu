@@ -42,8 +42,12 @@ public class UIManager : MonoBehaviour
         }
 
         photonView = GetComponent<PhotonView>();
-        UpdateCards();
 
+    }
+
+    private void Start() 
+    {
+        UpdateCards();
     }
 
     public void ResetCards()
