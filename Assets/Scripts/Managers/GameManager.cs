@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,19 +25,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            player2.PlayCard(rnd.Next(5));
-        }    
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            CheckCardsPlayed();
-        }   
-
     }
 
     public void CheckCardsPlayed()

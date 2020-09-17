@@ -1558,6 +1558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 620419497}
   - component: {fileID: 620419496}
+  - component: {fileID: 620419498}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1594,6 +1595,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &620419498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620419495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &668864219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,6 +1758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 760215319}
   - component: {fileID: 760215318}
+  - component: {fileID: 760215320}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -1770,6 +1794,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &760215320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760215317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &828854852
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,7 +2213,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1106125097}
-        m_MethodName: PlayCard
+        m_MethodName: PlayCardRPC
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2451,6 +2497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1106125098}
   - component: {fileID: 1106125097}
+  - component: {fileID: 1106125099}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -2473,10 +2520,10 @@ MonoBehaviour:
   playerID: 0
   cardButtonList:
   - {fileID: 1106461660}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1227264797}
+  - {fileID: 1152781170}
+  - {fileID: 2129917284}
+  - {fileID: 949858286}
 --- !u!4 &1106125098
 Transform:
   m_ObjectHideFlags: 0
@@ -2491,6 +2538,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1106125099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106125096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1106461658
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,7 +2645,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1106125097}
-        m_MethodName: PlayCard
+        m_MethodName: PlayCardRPC
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2745,7 +2814,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1106125097}
-        m_MethodName: PlayCard
+        m_MethodName: PlayCardRPC
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2968,7 +3037,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1106125097}
-        m_MethodName: PlayCard
+        m_MethodName: PlayCardRPC
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4766,7 +4835,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1106125097}
-        m_MethodName: PlayCard
+        m_MethodName: PlayCardRPC
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

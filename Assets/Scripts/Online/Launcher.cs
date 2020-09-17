@@ -20,8 +20,12 @@ public class Launcher : MonoBehaviourPunCallbacks
     [SerializeField] private Button connectButton = null;
     [SerializeField] private InputField inputField;
 
+    public static ExitGames.Client.Photon.Hashtable customProperties = new ExitGames.Client.Photon.Hashtable();
+
     private void Awake()
     {
+        ExitGames.Client.Photon.PhotonPeer.RegisterType(typeof(Card), (byte)'C', Card.Serialize, Card.Deserialize);
+
         connectButton.onClick.AddListener(Connect);
         PhotonNetwork.AutomaticallySyncScene = true;
 
@@ -112,7 +116,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         Debug.Log("No random room available.. creating");
 
         // #Critical: we failed to join a random room, maybe none exists or they are all full. No worries, we create a new room.
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
+        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom, CustomRoomProperties = customProperties});
     }
 
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using Photon.Pun;
 
 public class Player : MonoBehaviour
 {
@@ -24,11 +25,40 @@ public class Player : MonoBehaviour
         deck = new Deck();
     }
 
+    public void PlayCardRPC(int index)
+    {
+        GetComponent<PhotonView>().RPC("PlayCard", RpcTarget.All, index);
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Card xx = (Card)PhotonNetwork.CurrentRoom.CustomProperties["a"];
+            Debug.LogError(xx.GetCardStats());
+        }
+    }
+
+    [PunRPC]
     public void PlayCard(int index)
     {
         cardPlayed = deck.cardList[index];
+
+        if (PhotonNetwork.CurrentRoom.CustomProperties["a"] != null)
+        {
+            PhotonNetwork.CurrentRoom.CustomProperties["a"] = cardPlayed;
+            PhotonNetwork.CurrentRoom.SetCustomProperties(Launcher.customProperties);
+        }
+        else
+        {
+            Launcher.customProperties.Add("a", cardPlayed);
+            PhotonNetwork.CurrentRoom.SetCustomProperties(Launcher.customProperties);
+
+        }
+
+
+
         GameManager.instance.uiManager.MoveCardToCenter(index, playerID);
-        GameManager.instance.uiManager.SetButtonsActive(false);
+        // GameManager.instance.uiManager.SetButtonsActive(false);
 
         deck.RemoveCard(index);
         GameManager.instance.uiManager.UpdateCards();

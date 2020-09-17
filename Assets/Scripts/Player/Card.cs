@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Card
 {
-    public int Value { get; } = 0;
-    public Colour ColourType { get; }
-    public Element ElementType { get; }
+    public int Value = 0;
+    public Colour ColourType;
+    public Element ElementType;
 
     public enum Colour { Red, Orange, Yellow, Green, Blue, Purple };
     public enum Element { Water, Fire, Snow }
@@ -39,5 +39,35 @@ public class Card
 
         return s;
     }
+
+    public static byte[] Serialize(object obj)
+    {
+        Card card = (Card)obj;
+        byte[] bytes = new byte[3 * 5];
+        int index = 0;
+        ExitGames.Client.Photon.Protocol.Serialize(card.Value, bytes, ref index);
+        ExitGames.Client.Photon.Protocol.Serialize((int)card.ElementType, bytes, ref index);
+        ExitGames.Client.Photon.Protocol.Serialize((int)card.ColourType, bytes, ref index);
+        return bytes;
+    }
+
+    public static object Deserialize(byte[] bytes)
+    {
+        Card card = new Card();
+        int index = 0;
+        int element = (int)card.ElementType;
+        int colour = (int)card.ColourType;
+
+        ExitGames.Client.Photon.Protocol.Deserialize(out card.Value, bytes, ref index);
+        ExitGames.Client.Photon.Protocol.Deserialize(out element, bytes, ref index);
+        ExitGames.Client.Photon.Protocol.Deserialize(out colour, bytes, ref index);
+
+        card.ElementType = (Card.Element)element;
+        card.ColourType = (Card.Colour)colour;
+
+        return card;
+    }
+
+
 
 }
