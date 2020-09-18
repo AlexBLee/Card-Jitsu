@@ -5,15 +5,21 @@ using UnityEngine.UI;
 
 public class CardImage : CardDisplay
 {
+    private Image image;
+
     private Vector2 formerScale { get; set; }
 
     [SerializeField]
     public GameObject stats;
 
+    [SerializeField] Sprite cardFront;
+    [SerializeField] Sprite cardBack;
+
     private void Awake() 
     {
         formerPosition = GetComponent<RectTransform>().position;
         formerScale = transform.localScale;
+        image = GetComponent<Image>();
     }
 
     public IEnumerator FlipImage()
@@ -21,6 +27,7 @@ public class CardImage : CardDisplay
         iTween.RotateTo(gameObject, new Vector3(0,90,0), 0.5f);
 
         yield return new WaitForSeconds(0.1f);
+        image.sprite = cardFront;
         UpdateCard();
         stats.SetActive(true);
 
@@ -41,6 +48,8 @@ public class CardImage : CardDisplay
         gameObject.SetActive(true);
         iTween.MoveTo(gameObject, formerPosition, 0.7f);
 
-        GetComponent<Image>().color = Color.white;
+        image.color = Color.white;
+        image.sprite = cardBack;
+
     }
 }

@@ -872,6 +872,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fb24e427630a0304594f03bc13f0506c, type: 3}
   - {fileID: 21300000, guid: 8ea46f5ec5330364fa27f2f3c8293dbb, type: 3}
   stats: {fileID: 1787835894}
+  cardFront: {fileID: 21300000, guid: bf4b603417e9f794fa79aab287c09e8c, type: 3}
+  cardBack: {fileID: 21300000, guid: 7434a206e4ba4544fa23df31bc22e52b, type: 3}
 --- !u!1 &405289649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,6 +1005,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fb24e427630a0304594f03bc13f0506c, type: 3}
   - {fileID: 21300000, guid: 8ea46f5ec5330364fa27f2f3c8293dbb, type: 3}
   stats: {fileID: 899158776}
+  cardFront: {fileID: 21300000, guid: bf4b603417e9f794fa79aab287c09e8c, type: 3}
+  cardBack: {fileID: 21300000, guid: 7434a206e4ba4544fa23df31bc22e52b, type: 3}
 --- !u!114 &435224803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1703,6 +1707,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fb24e427630a0304594f03bc13f0506c, type: 3}
   - {fileID: 21300000, guid: 8ea46f5ec5330364fa27f2f3c8293dbb, type: 3}
   stats: {fileID: 1360136129}
+  cardFront: {fileID: 21300000, guid: bf4b603417e9f794fa79aab287c09e8c, type: 3}
+  cardBack: {fileID: 21300000, guid: 7434a206e4ba4544fa23df31bc22e52b, type: 3}
 --- !u!114 &668864222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1756,7 +1762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &692785321
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3897,6 +3903,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fb24e427630a0304594f03bc13f0506c, type: 3}
   - {fileID: 21300000, guid: 8ea46f5ec5330364fa27f2f3c8293dbb, type: 3}
   stats: {fileID: 2014308989}
+  cardFront: {fileID: 21300000, guid: bf4b603417e9f794fa79aab287c09e8c, type: 3}
+  cardBack: {fileID: 21300000, guid: 7434a206e4ba4544fa23df31bc22e52b, type: 3}
 --- !u!114 &1446757041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4683,6 +4691,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fb24e427630a0304594f03bc13f0506c, type: 3}
   - {fileID: 21300000, guid: 8ea46f5ec5330364fa27f2f3c8293dbb, type: 3}
   stats: {fileID: 732660462}
+  cardFront: {fileID: 21300000, guid: bf4b603417e9f794fa79aab287c09e8c, type: 3}
+  cardBack: {fileID: 21300000, guid: 7434a206e4ba4544fa23df31bc22e52b, type: 3}
 --- !u!114 &1733987364
 MonoBehaviour:
   m_ObjectHideFlags: 0
