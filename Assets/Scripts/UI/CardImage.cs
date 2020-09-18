@@ -9,11 +9,11 @@ public class CardImage : CardDisplay
 
     private Vector2 formerScale { get; set; }
 
-    [SerializeField]
     public GameObject stats;
-
     [SerializeField] Sprite cardFront;
     [SerializeField] Sprite cardBack;
+
+    public GameObject cardOverlay;
 
     private void Awake() 
     {
@@ -27,7 +27,9 @@ public class CardImage : CardDisplay
         iTween.RotateTo(gameObject, new Vector3(0,90,0), 0.5f);
 
         yield return new WaitForSeconds(0.1f);
+        
         image.sprite = cardFront;
+        cardOverlay.SetActive(true);
         UpdateCard();
         stats.SetActive(true);
 
@@ -37,6 +39,7 @@ public class CardImage : CardDisplay
     public override void ResetCard()
     {
         stats.SetActive(false);
+        cardOverlay.SetActive(false);
 
         gameObject.SetActive(false);
         transform.position = formerPosition - new Vector2(0, 300);
