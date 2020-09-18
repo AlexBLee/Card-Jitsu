@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         
         // Used for the card winning animation to determine which cards on screen will do the winning animation.
         bool playerOneWin = false;
+        bool tie = false;
 
         int playerOneElement = (int)player1.cardPlayed.ElementType;
         int playerTwoElement = (int)player2.cardPlayed.ElementType;
@@ -72,9 +73,13 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 player2.AddWinningCard(player2.cardPlayed);
             }
+            else if (player1.cardPlayed.Value == player2.cardPlayed.Value)
+            {
+                tie = true;
+            }
         }
 
-        StartCoroutine(UIManager.instance.PlayCardWinningAnimation(playerOneWin, player2.cardPlayed));
+        StartCoroutine(UIManager.instance.PlayCardWinningAnimation(playerOneWin, player2.cardPlayed, tie));
         StartCoroutine(NextTurn());
     }
 

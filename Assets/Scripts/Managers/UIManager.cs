@@ -99,7 +99,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public IEnumerator PlayCardWinningAnimation(bool player1Win, Card player2Card)
+    public IEnumerator PlayCardWinningAnimation(bool player1Win, Card player2Card, bool tie)
     {
         centerCard2.card = player2Card;
         
@@ -109,10 +109,18 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
 
-        GameObject winningCard = (player1Win == true) ? centerCard.gameObject : centerCard2.gameObject;
-        GameObject losingCard = (player1Win == true) ? centerCard2.gameObject : centerCard.gameObject;
+        if (tie)
+        {
+            iTween.ScaleTo(centerCard.gameObject, new Vector3(0,0,0), 0.5f);
+            iTween.ScaleTo(centerCard2.gameObject, new Vector3(0,0,0), 0.5f);
+        }
+        else
+        {
+            GameObject winningCard = (player1Win == true) ? centerCard.gameObject : centerCard2.gameObject;
+            GameObject losingCard = (player1Win == true) ? centerCard2.gameObject : centerCard.gameObject;
 
-        iTween.ScaleTo(losingCard.gameObject, new Vector3(0,0,0), 0.5f);
+            iTween.ScaleTo(losingCard.gameObject, new Vector3(0,0,0), 0.5f);
+        }
 
         yield return new WaitForSeconds(0.5f);
 
