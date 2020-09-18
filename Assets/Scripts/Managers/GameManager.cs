@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         SceneManager.LoadScene("Menu");
+        base.OnLeftRoom();
         Debug.Log("Player left room");
     }
 
