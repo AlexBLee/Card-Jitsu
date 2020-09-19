@@ -23,6 +23,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] CardImage winningCardDisplay;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] TextMeshProUGUI winText;
+    [SerializeField] TextMeshProUGUI player1Name;
+    [SerializeField] TextMeshProUGUI player2Name;
+
+
     public PhotonView photonView;
 
     void Awake()
@@ -38,6 +42,10 @@ public class UIManager : MonoBehaviour
 
         photonView = GetComponent<PhotonView>();
 
+        player1Name.text = PhotonNetwork.NickName;
+            
+        player2Name.text = 
+        PhotonNetwork.IsMasterClient ? PhotonNetwork.PlayerList[1].NickName : PhotonNetwork.PlayerList[0].NickName; 
     }
 
     private void Start() 

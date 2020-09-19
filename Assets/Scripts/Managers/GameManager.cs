@@ -114,6 +114,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsConnected)
         {
             PhotonNetwork.LeaveRoom();
+            
+            Launcher.customProperties.Clear();
+            PhotonNetwork.CurrentRoom.SetCustomProperties(Launcher.customProperties);
         }
     }
 
